@@ -31,6 +31,7 @@ require 'zoho_invoice/expense'
 require 'zoho_invoice/bank_transaction'
 require 'zoho_invoice/bill'
 require 'zoho_invoice/journal'
+require 'zoho_invoice/transaction'
 
 module ZohoInvoice
   class << self
