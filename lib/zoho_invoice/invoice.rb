@@ -62,7 +62,8 @@ module ZohoInvoice
       :time_entry_ids,
       :unit,
       :billing_address,
-      :shipping_address
+      :shipping_address,
+      :write_off_amount      
     ]
 
     CREATE_UPDATE_ATTRIBUTES = READ_ATTRIBUTES - [:invoice_id]
