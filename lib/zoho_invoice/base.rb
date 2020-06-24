@@ -167,14 +167,15 @@ module ZohoInvoice
     private
 
     def self.retrieve(client, url, plural = true, query = {})
-      klass_name = self.to_s.split('::').last.downcase
+      klass_name = self.to_s.split('::').last.to_underscore
       klass_name = klass_name.pluralize if(plural)
       page = 1
       #query = {}
       objects_to_hydrate = []
+      new_page_query = query
 
       begin
-        result_hash = client.get(url, query).body
+        result_hash = client.get(url, new_page_query).body
         potential_objects = result_hash
 
         if potential_objects
@@ -190,7 +191,7 @@ module ZohoInvoice
           has_more_page = page_context['has_more_page']
           if(has_more_page)
             page += 1
-            query = { :page => page }
+            new_page_query = query.merge({ :page => page })
           end
         else
           has_more_page = false
