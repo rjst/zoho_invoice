@@ -48,7 +48,7 @@ module ZohoInvoice
       :payment_terms,
       :payment_terms_label,
       :payment_made,
-      :payment_reminder_enabled,      
+      :payment_reminder_enabled,
       :credits_applied,
       :tax_amount_withheld,
       :project_id,
@@ -97,8 +97,8 @@ module ZohoInvoice
       return new_hash
     end
 
-    def self.all(client)
-      retrieve(client, '/api/v3/invoices')
+    def self.all(client, options={})
+      retrieve(client, '/api/v3/invoices', true, options)
     end
 
     def self.find(client, id, options={})

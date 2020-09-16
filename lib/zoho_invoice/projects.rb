@@ -15,15 +15,15 @@ module ZohoInvoice
       :total_hours,
       :billable_hours
     ]
-    
+
     has_many :users
 
     CREATE_UPDATE_ATTRIBUTES = READ_ATTRIBUTES - [:project_id]
 
     define_object_attrs(*READ_ATTRIBUTES)
 
-    def self.all(client)
-      retrieve(client, '/api/v3/projects')
+    def self.all(client, options={})
+      retrieve(client, '/api/v3/projects', true, options)
     end
 
     def self.find(client, id, options={})
@@ -31,7 +31,7 @@ module ZohoInvoice
     end
 
     def self.users(client, project_id, options={})
-      User.in_project(client, project_id)
+      User.in_project(client, project_id, options)
     end
 
   end

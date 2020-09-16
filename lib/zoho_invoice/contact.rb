@@ -8,7 +8,7 @@ module ZohoInvoice
         :contact_name,
         :company_name,
         :website,
-        :currency_id,        
+        :currency_id,
         :first_name,
         :last_name,
         :address,
@@ -36,12 +36,12 @@ module ZohoInvoice
     has_many :custom_fields
 
 
-    def self.all(client) 
-      retrieve(client, '/api/v3/contacts')
+    def self.all(client, options={})
+      retrieve(client, '/api/v3/contacts', true, options)
     end
 
     def self.find(client, id, options={})
-      retrieve(client, "/api/v3/contacts/#{id}", false)
+      retrieve(client, "/api/v3/contacts/#{id}", false, options)
     end
 
   end

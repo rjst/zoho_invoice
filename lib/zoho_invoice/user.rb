@@ -11,7 +11,7 @@ module ZohoInvoice
       :rate,
       :budget_hours
     ]
-    
+
     CREATE_UPDATE_ATTRIBUTES = READ_ATTRIBUTES - [:user_id]
 
     define_object_attrs(*READ_ATTRIBUTES)
@@ -25,7 +25,7 @@ module ZohoInvoice
     end
 
     def self.in_project(client, project_id, options={})
-      retrieve(client, "/api/v3/projects/#{project_id}/users", true)
+      retrieve(client, "/api/v3/projects/#{project_id}/users", true, options)
     end
 
   end
